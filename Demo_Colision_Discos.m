@@ -1,5 +1,5 @@
 %1º Leer el .stl
-    stl = stlread('Mod_Boro_Triang.stl');
+    stl = stlread('End_Boro_Triang.stl');
 
 %2º Generar la malla a partir del .stl
     link1 = collisionMesh(stl.Points);

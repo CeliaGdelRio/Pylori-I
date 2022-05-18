@@ -5,7 +5,7 @@
     %2º. Array de vectores con los ángulos relativos entre discos.
         Assembly = {[0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0];
                     [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
-                    [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0],
+                    [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
                     [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0]};
         %Asembly = [pi/2 pi/2 pi/2 pi/2];
     
@@ -21,7 +21,7 @@
         robot.setConfig(homeConfig);
         
     %2º. Declarar la posición deseada y sacar su matriz de transformación.
-        targetPos = [-150 -100 180];
+        targetPos = [100 -50 100];
         tform = trvec2tform(targetPos);
         
     %3º. Llamar al método iKine del robot. Este método devuelve la

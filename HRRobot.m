@@ -15,8 +15,8 @@ classdef HRRobot < HRRTree
         function obj = HRRobot(NLinks, Asembly)
             obj@HRRTree(NLinks, Asembly);
             %Default STL files:
-            obj.BaseSTL_File = "Robot_Base.stl";
-            obj.LinkSTL_File = "Mod_Boro_Triang.stl";
+            obj.BaseSTL_File = "1pcs_Robot_Base.stl";
+            obj.LinkSTL_File = "End_Boro_Triang.stl";
             obj.BaseSTL = 0;
             obj.LinkSTL = 0;
         end
