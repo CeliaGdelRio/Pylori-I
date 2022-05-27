@@ -15,8 +15,8 @@ classdef HRRobot < HRRTree
         function obj = HRRobot(NLinks, Asembly)
             obj@HRRTree(NLinks, Asembly);
             %Default STL files:
-            obj.BaseSTL_File = "1pcs_Robot_Base.stl";
-            obj.LinkSTL_File = "End_Boro_Triang.stl";
+            obj.BaseSTL_File = "Robot_Base.stl";
+            obj.LinkSTL_File = "Mod_Boro_Triang.stl";
             obj.BaseSTL = 0;
             obj.LinkSTL = 0;
         end
@@ -57,7 +57,7 @@ classdef HRRobot < HRRTree
             end
             
             if strcmp(visuals, 'on')
-                %Si no se han leído los STL, los lee:
+                %Si no se han leÃ­do los STL, los lee:
                 if ~((isempty(obj.BaseSTL))||(isempty(obj.LinkSTL)))
                     obj.addVisuals();
                 end
@@ -75,7 +75,7 @@ classdef HRRobot < HRRTree
                 lastLink = 0;
                 for j = 1:obj.NSections
                     for i = 1:obj.NLinks(j)
-                        %Situar las mallas en la posición del disco
+                        %Situar las mallas en la posiciÃ³n del disco
                         link.Pose = getTransform(obj, config, obj.BodyNames{1, lastLink+i});
 
                         %Graficar los discos, guardando el objeto "Patch"
@@ -163,7 +163,7 @@ classdef HRRobot < HRRTree
             currentConfig = obj.Config;
             
             iter = 0;      %Contador de iteraciones.
-            maxIter = 200; %Máximo de iteraciones.
+            maxIter = 200; %MÃ¡ximo de iteraciones.
             maxIterIKine = 20;
             
             eMax = 0.1;   %Error deseado en el posicionamiento
@@ -207,7 +207,7 @@ classdef HRRobot < HRRTree
                    currentPos = tform2trvec(tform);
                    
                    %dm_x:                       
-                           %Cinemática inversa metiendo un pequeño incremento en X
+                           %CinemÃ¡tica inversa metiendo un pequeÃ±o incremento en X
                            newPos = [currentPos(1)+0.0001 currentPos(2) currentPos(3)];
                            
                            error = eMax +1;
@@ -217,7 +217,7 @@ classdef HRRobot < HRRTree
                                [newConfig, error, ~] = obj.iKineHRR(trvec2tform(newPos));
                                ii = ii + 1;
                            end
-                       %Cálculo del incremento que se produce en la manipulabilidad:            
+                       %CÃ¡lculo del incremento que se produce en la manipulabilidad:            
                            J = obj.jacobianHRR('Config', newConfig);
                            JJt = J * J';
                            manip_aux = manipulability(JJt);
@@ -225,7 +225,7 @@ classdef HRRobot < HRRTree
                            dm_x = manip_aux - manip_ant;
                    
                    %dm_y:                       
-                           %Cinemática inversa metiendo un pequeño incremento en Y
+                           %CinemÃ¡tica inversa metiendo un pequeÃ±o incremento en Y
                            newPos = [currentPos(1) currentPos(2)+0.0001 currentPos(3)];
                            
                            error = eMax +1;
@@ -235,7 +235,7 @@ classdef HRRobot < HRRTree
                                [newConfig, error, ~] = obj.iKineHRR(trvec2tform(newPos));
                                ii = ii + 1;
                            end
-                       %Cálculo del incremento que se produce en la manipulabilidad:            
+                       %CÃ¡lculo del incremento que se produce en la manipulabilidad:            
                            J = obj.jacobianHRR('Config', newConfig);
                            JJt = J * J';
                            manip_aux = manipulability(JJt);
@@ -243,7 +243,7 @@ classdef HRRobot < HRRTree
                            dm_y = manip_aux - manip_ant;
                    
                    %dm_z:                       
-                           %Cinemática inversa metiendo un pequeño incremento en Z
+                           %CinemÃ¡tica inversa metiendo un pequeÃ±o incremento en Z
                            newPos = [currentPos(1) currentPos(2) currentPos(3)+0.0001];
                            
                            error = eMax +1;
@@ -253,7 +253,7 @@ classdef HRRobot < HRRTree
                                [newConfig, error, ~] = obj.iKineHRR(trvec2tform(newPos));
                                ii = ii + 1;
                            end
-                       %Cálculo del incremento que se produce en la manipulabilidad:            
+                       %CÃ¡lculo del incremento que se produce en la manipulabilidad:            
                            J = obj.jacobianHRR('Config', newConfig);
                            JJt = J * J';
                            manip_aux = manipulability(JJt);
@@ -264,7 +264,7 @@ classdef HRRobot < HRRTree
                currentPos(2) = currentPos(2) + dm_y * k;
                currentPos(3) = currentPos(3) + dm_z * k;
                
-           %CÁLCULO DE NUEVA POSICIÓN
+           %CÃLCULO DE NUEVA POSICIÃ“N
                tform = trvec2tform(currentPos);
                
                error = eMax +1;
@@ -275,7 +275,7 @@ classdef HRRobot < HRRTree
                    ii = ii + 1;
                end
                
-           %CÁLCULO DE LA MANIPULABILIDAD OBTENIDA            
+           %CÃLCULO DE LA MANIPULABILIDAD OBTENIDA            
                J = obj.jacobianHRR('Config', newConfig);
                JJt = J * J';
                manip_ant = manipulability(JJt);
@@ -284,7 +284,7 @@ classdef HRRobot < HRRTree
             end
         end
         
-        %% ÁNGULOS SECCIONES
+        %% ÃNGULOS SECCIONES
         function [betas, phis] = angulosSecciones (obj,positions)
 
             n=0;

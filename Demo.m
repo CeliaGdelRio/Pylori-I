@@ -21,7 +21,7 @@
         robot.setConfig(homeConfig);
         
     %2º. Declarar la posición deseada y sacar su matriz de transformación.
-        targetPos = [100 -50 100];
+        targetPos = [140 140 215];
         tform = trvec2tform(targetPos);
         
     %3º. Llamar al método iKine del robot. Este método devuelve la
@@ -39,15 +39,3 @@
     %   O incluso de cualquier disco del robot:
         %link6Pos = tform2trvec(getTransform(robot, robot.Config, 'L1.6'));
         
-% % %% INICIO DE ARDUINO
-% 
-%         delete(instrfindall);
-%         Arduino = serial("COM5",'BaudRate',250000);
-%         
-%         set(Arduino,'DataBits',8);
-%         set(Arduino,'StopBits',1);
-%         set(Arduino,'Parity','none');
-%         set(Arduino,'Timeout',0.5);
-%         fopen(Arduino);
-%         pause(2);
-%         

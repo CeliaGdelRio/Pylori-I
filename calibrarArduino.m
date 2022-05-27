@@ -1,14 +1,19 @@
 function calibrarArduino(Arduino,modo,motor,pul)
 
-% % INICIAR ARDUINO
-% delete(instrfindall);
-% Arduino = serial("COM5",'BaudRate',250000);
-% 
-% set(Arduino,'DataBits',8);
-% set(Arduino,'StopBits',1);
-% set(Arduino,'Parity','none');
-% set(Arduino,'Timeout',0.5);
-% fopen(Arduino);
+% INICIAR ARDUINO
+delete(instrfindall);
+Arduino = serialport("COM3",250000);
+
+% Arduino.DataBits(8);
+% Arduino.StopBits(1);
+% Arduino.Parity('none');
+% Arduino.Timeout(1);
+set(Arduino,'DataBits',8);
+set(Arduino,'StopBits',1);
+set(Arduino,'Parity','none');
+set(Arduino,'Timeout',0.5);
+% %configureTerminator(Arduino,"CR/LF");
+fopen(Arduino);
 % pause(2);
 
 
