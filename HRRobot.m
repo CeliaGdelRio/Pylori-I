@@ -1,5 +1,3 @@
-%30/04/2021
-
 classdef HRRobot < HRRTree
     %HRROBOT Objeto Robot Hiperredundante.
     
