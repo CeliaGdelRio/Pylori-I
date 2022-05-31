@@ -1,3 +1,4 @@
+
 NPoints = 10;
 
 q = cell(1, 10); %Vector de configuraciones.
@@ -7,7 +8,11 @@ P2 = [100 -150 150];
 P3 = [0 0 200];
 P4 = [0 0 258];
 
-robot = HRRobot([20 12 12 8], [pi/2 pi/2 pi/2 pi/2]);
+Assembly = {[0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0];
+            [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
+            [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
+            [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0]};
+robot = HRRobot([20 12 12 8], Assembly);
 robot.move(P1(1), P1(2), P1(3), 'GradientDescent');
 
 disp("Calculando trayectorias...");

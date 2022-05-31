@@ -1,12 +1,12 @@
 function enviarArduino(Arduino,newConfig,tray,N)
 
 % delete(instrfindall);
-% Arduino = serial("COM5",'BaudRate',250000);
+% Arduino = serialport("COM3",250000);
 % 
 % set(Arduino,'DataBits',8);
 % set(Arduino,'StopBits',1);
 % set(Arduino,'Parity','none');
-% set(Arduino,'Timeout',0.5);
+% set(Arduino,'Timeout',5);
 % fopen(Arduino);
 % pause(2);
 
@@ -39,8 +39,8 @@ if tray == 1
     end
     
 else
-    hilos = ang2long(newConfig)
-    [pulsos,vel] = long2pulsos(hilos)
+    hilos = ang2long(newConfig);
+    [pulsos,vel] = long2pulsos(hilos);
 
     flushinput(Arduino);
 
@@ -76,5 +76,3 @@ pause(10);
 %fclose(Arduino);
 end
 
-
-            
