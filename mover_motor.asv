@@ -1,34 +1,29 @@
-function mover_motor(motor,modo, pulsos)
-% establecer conexion con arduino
-ardu=serialport("COM3",250000);
+function mover_motor(motor,modo, pulsos,pos,sec)
+% se establece conexion con arduino
+    ardu=serialport("COM3",250000);
+    pause(1);
+    
+    % configureTerminator(ardu,"CR")
+    
+    % como los motores 6 y 8 no estan conectados a sus respectivos drivers, 
+    % asignamos a m el valor necesario para mover el motor correcto
+    if motor==8
+        m=17;
+    elseif motor==6
+        m=18;
+    else
+        m=motor;
+    end
 
-% configureTerminator(ardu,"CR")
-
-% set(Arduino,'DataBits',8);
-% set(Arduino,'StopBits',1);
-% set(Arduino,'Parity','none');
-% ardu.DataBits(8);
-% ardu.StopBits(1);
-% ardu.Parity('none');
-
-% modo en el que se va a mover
-if modo==0:
-    case 0
-        if motor==8
-            i=17;
-        elseif motor==6
-            i=18;
-        else
-            i=motor;
-        end
-        vect="["+i+";1;"+pulsos+"]";
-        fprintf(vect);
+    % modo en el que se va a mover
+        %modo 1: para mover un motor durante sec segundos
+    if modo==1
+        vect="["+ m +";1;"+ pulsos +"]";
         writeline(ardu,vect);
-        %vect="["+i+";1;0]";
-        %pause(5)
-        %writeline(ardu,vect);
-end
+        vect="["+m+";0]";
+        pause(sec);
+        writeline(ardu,vect);
+    end
 
-%clear ardu;
-%delete(ardu);
+delete(ardu);
 end

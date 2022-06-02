@@ -7,7 +7,6 @@
                     [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
                     [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
                     [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0]};
-        %Asembly = [pi/2 pi/2 pi/2 pi/2];
     
     %3º. Se crea el robot, pasándole por parámetro los vectores anteriores.
         robot = HRRobot(NLinks, Assembly);
