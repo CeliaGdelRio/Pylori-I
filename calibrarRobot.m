@@ -4,7 +4,8 @@ function calibrarRobot(modo,motor)
     pause(1);
     
     % configureTerminator(ardu,"CR")
-    
+    flush(ardu,"input");
+
     % como los motores 6 y 8 no estan conectados a sus respectivos drivers, 
     % asignamos a m el valor necesario para mover el motor correcto
     if motor==8
@@ -39,14 +40,14 @@ function calibrarRobot(modo,motor)
         case 2 
             for i=1:16
                 if i==8
-                    vect="[17;2;200;0]";
+                    vect="[17;2;-500;0]";
                 elseif i==6
-                    vect="[18;2;150;0]";
+                    vect="[18;2;-500;0]";
                 else
-                    vect="["+i+";2;150;0]";
+                    vect="["+i+";2;-500;0]";
                 end
-            writeline(ardu,vect);
-            pause(0.05);
+                writeline(ardu,vect);
+                pause(0.1);
             end
     end
 % Hay que borrar el objeto arduino antes de salir

@@ -1,3 +1,4 @@
+Demo
 %% CREACIÓN DEL ROBOT:
     %1º. Crear un vector con el número de discos de cada sección.
         NLinks = [20 12 12 8];
@@ -20,7 +21,7 @@
         robot.setConfig(homeConfig);
         
     %2º. Declarar la posición deseada y sacar su matriz de transformación.
-        targetPos = [140 140 215];
+        targetPos = [0 0 258];
         tform = trvec2tform(targetPos);
         
     %3º. Llamar al método iKine del robot. Este método devuelve la
