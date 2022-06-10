@@ -1,4 +1,4 @@
-%Demo
+function [newConfig,error,iter, currentPos]=Demo(x,y,z)
 %% CREACIÓN DEL ROBOT:
     %1º. Crear un vector con el número de discos de cada sección.
         NLinks = [20 12 12 8];
@@ -21,7 +21,7 @@
         robot.setConfig(homeConfig);
         
     %2º. Declarar la posición deseada y sacar su matriz de transformación.
-        targetPos = [0 0 258];
+        targetPos = [x y z];
         tform = trvec2tform(targetPos);
         
     %3º. Llamar al método iKine del robot. Este método devuelve la
@@ -38,4 +38,5 @@
         
     %   O incluso de cualquier disco del robot:
         %link6Pos = tform2trvec(getTransform(robot, robot.Config, 'L1.6'));
+end
         
