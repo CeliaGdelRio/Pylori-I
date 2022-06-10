@@ -1,8 +1,8 @@
-function moverRobot(newConfig,tray,N)
+function moverRobot(ardu,newConfig,tray,N)
 
-% establecer conexion con arduino
-ardu=serialport("COM3",250000);
-pause(1);
+% % establecer conexion con arduino
+% ardu=serialport("COM3",250000);
+% pause(1);
 
     % tray vale 1 si el robot debe seguir una trayectoria y 0 si no.
     % N es el número de puntos de la trayectoria.
@@ -54,5 +54,5 @@ end
 
 pause(10);
 
-delete(ardu);
+% delete(ardu);
 end

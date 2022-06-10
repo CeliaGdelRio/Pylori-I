@@ -1,7 +1,7 @@
-function calibrarRobot(modo,motor)
+function calibrarRobot(ardu,modo,motor)
 % establecer conexion con arduino
-ardu=serialport("COM3",250000);
-pause(1);
+% ardu=serialport("COM3",250000);
+% pause(1);
 
 % configureTerminator(ardu,"CR")
 flush(ardu,"input");
@@ -51,5 +51,5 @@ switch modo
         end
 end
 % Hay que borrar el objeto arduino antes de salir
-delete(ardu);
+%delete(ardu);
 end

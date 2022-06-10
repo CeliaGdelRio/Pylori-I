@@ -1,7 +1,7 @@
-function mover_motor(motor, modo, pulsos,pos,sec)
-% se establece conexion con arduino
-ardu=serialport("COM3",250000);
-pause(1);
+function mover_motor(ardu,motor, modo, pulsos,pos,sec)
+% % se establece conexion con arduino
+% ardu=serialport("COM3",250000);
+% pause(1);
 
 % configureTerminator(ardu,"CR")
 flush(ardu,"input");
@@ -33,5 +33,5 @@ elseif modo==2
    pause(3);
 end
 
-delete(ardu);
+% delete(ardu);
 end
