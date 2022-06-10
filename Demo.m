@@ -1,4 +1,4 @@
-Demo
+%Demo
 %% CREACIÓN DEL ROBOT:
     %1º. Crear un vector con el número de discos de cada sección.
         NLinks = [20 12 12 8];

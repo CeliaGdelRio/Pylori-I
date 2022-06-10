@@ -7,7 +7,7 @@ pause(1);
     % tray vale 1 si el robot debe seguir una trayectoria y 0 si no.
     % N es el número de puntos de la trayectoria.
 
-if tray == 1 % El robot debe llegar a la pos final pasando por los N puntos
+if tray==1 % El robot debe llegar a la pos final pasando por los N puntos
     % de la trayectoria  
     for j=1:N
         % Se calculan los pulsos y la velocidad de los motores para cada
