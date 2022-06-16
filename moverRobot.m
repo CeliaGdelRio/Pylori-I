@@ -47,7 +47,7 @@ else % si no se sigue una trayectoria, se mueven los motores directamente
                 m=i;
             end
             writeline(ardu,"["+m+";2;"+vel(i)+";"+pulsos(i)+"]");
-            pause(0.05)
+            pause(0.02)
         end
         pause(2);
 end
