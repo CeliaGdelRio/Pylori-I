@@ -16,8 +16,8 @@ Assembly = {[0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.
 robot = HRRobot([20 12 12 8], Assembly);
 
 %Se calculan los puntos del círculo
-x1 = linspace(-104,104,N);
-x2 = linspace(104,-104,10);
+x1 = linspace(-104,104,N/2+1);
+x2 = linspace(104,-104,N/2+1);
 y1 = abs(sqrt(104^2-x1.^2));
 y2=-abs(sqrt(104^2-x2.^2));
 
@@ -27,8 +27,15 @@ plot(x1,y1,x2,y2)
 disp("Calculando trayectorias...");
 disp(1);
 
-for i = 1:N
-    [q{1, i}, ~, ~] = robot.move(x1(i), y1(i),z, 'GradientDescent');
+% for i = 1:N
+%     [q{1, i}, ~, ~] = robot.move(x1(i), y1(i),z, 'GradientDescent');
+% end
+for i = 1:(N+1)
+    if i<=N/2
+        [q{1,i}, ~, ~] = robot.move(x1(i), y1(i),z, 'GradientDescent');
+    else
+        [q{1,i}, ~, ~] = robot.move(x2(i-(N/2)), y2(i-(N/2)),z, 'GradientDescent');
+    end
 end
 
 disp("Imprimiendo...");
