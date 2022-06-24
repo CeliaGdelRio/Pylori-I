@@ -1,5 +1,5 @@
 
-NPoints = 10;
+NPoints = 3;
 
 q = cell(1, 10); %Vector de configuraciones.
 
@@ -16,7 +16,6 @@ robot = HRRobot([20 12 12 8], Assembly);
 robot.move(P1(1), P1(2), P1(3), 'GradientDescent');
 
 disp("Calculando trayectorias...");
-
 disp(1);
 
 
