@@ -38,7 +38,7 @@ classdef HRRBase < HRRObject
             
             %Visuals:
             if strcmp(visuals, 'on')
-                obj.addVisual("Mesh", "Robot_Base.stl");
+                obj.addVisual("Mesh", "1pcs_Robot_Base.stl");
             end
         end
     end

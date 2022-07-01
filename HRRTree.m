@@ -41,11 +41,11 @@ classdef HRRTree < rigidBodyTree
             phi = 0;
             r = 0;
             
-            switch type
-                case 'cart'
+            switch type %tipo de coordenadas
+                case 'cart' %cartesianas
                     coords = cart2sph(coords);
                     [beta, phi, r] = sph2hrr(coords);
-                case 'sph'
+                case 'sph' %esféricas
                     [beta, phi, r] = sph2hrr(coords);
                 case 'hrr'
                     beta = coords(1);
@@ -816,7 +816,7 @@ classdef HRRTree < rigidBodyTree
         
         %% COLISIONES
         function [n,colision] = colisiones (obj, newConfig)
-            stl = stlread('Mod_Boro_Triang.stl');
+            stl = stlread('End_Boro_Triang.stl');
 
             disco1 = collisionMesh(stl.Points);
             disco2 = collisionMesh(stl.Points);

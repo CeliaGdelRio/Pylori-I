@@ -619,6 +619,7 @@ classdef HRRTree < rigidBodyTree
             logService('DEBUG', N);
             for i=1:N
                 tform = trvec2tform([x(i), y(i), z(i)]);
+
                 switch type
                     case 'GradientDescent'
                         [newConfig{i}, error{i}, iter{i}] = obj.iKineGradientDescent(tform, varargin{:});
