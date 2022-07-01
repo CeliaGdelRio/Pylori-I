@@ -7,7 +7,7 @@ function mover_motor(ardu,motor, modo, pulsos,pos,sec)
 flush(ardu,"input");
 
 % como los motores 6 y 8 no estan conectados a sus respectivos drivers, 
-% asignamos a m el valor necesario para mover el motor correcto
+% asignamos a m el valor necesario para mover el motor correcto.
 if motor==8
     m=17;
 elseif motor==6
