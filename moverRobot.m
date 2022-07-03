@@ -32,6 +32,7 @@ else % si no se sigue una trayectoria, se mueven los motores directamente
 
     %Se calculan los valores de velocidad y pulsos para mover cada motor
     hilos = ang2long(newConfig{1});
+    disp(hilos);
     [pulsos,vel] = long2pulsos(hilos);
 
     flush(ardu,"input");% limpio los comandos que pudiese haber aún en arduino
@@ -41,8 +42,7 @@ else % si no se sigue una trayectoria, se mueven los motores directamente
     cont=1;
         for i=1:2:16
             if hilos(i)<=0 %si el motor que se destensa es el impar
-                m=i;
-                writeline(ardu,"["+m+";2;"+vel(i)+";"+pulsos(i)+"]");%se mueve el motor impar
+                writeline(ardu,"["+i+";2;"+vel(i)+";"+pulsos(i)+"]");%se mueve el motor impar
                 pause(0.02)
                 tensar(cont)=i+1; %almaceno en el vector de motores a tensar el par
             else %si el motor que se destensa es el par
