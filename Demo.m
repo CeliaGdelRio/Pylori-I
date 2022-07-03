@@ -4,13 +4,14 @@ function [newConfig,error,iter, currentPos]=Demo(x,y,z)
         NLinks = [20 12 12 8];
         
     %2º. Array de vectores con los ángulos relativos entre discos.
-        Assembly = {[0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0];
-                    [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
-                    [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
-                    [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0]};
+%         Assembly = {[0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0];
+%                     [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
+%                     [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0];
+%                     [(pi/2.0-2*pi/16) -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0 pi/2.0 -pi/2.0]};
+        Alpha = [pi/2 pi/2 pi/2 pi/2];
     
     %3º. Se crea el robot, pasándole por parámetro los vectores anteriores.
-        robot = HRRobot(NLinks, Assembly);
+        robot = HRRobot(NLinks, Alpha);
         
 %% MOVIMIENTO A UNA POSICIÓN DESEADA:
     %1º. Se inicializa un vector configuración, cuyo valor inicial es el

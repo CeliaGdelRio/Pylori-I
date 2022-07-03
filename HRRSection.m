@@ -7,17 +7,17 @@ classdef HRRSection < rigidBodyTree
         NLinks;
         EndLink;
         Assembly;
-        %Alpha;
+        Alpha;
         A;
     end
     
     methods (Access = public)
-        function obj = HRRSection(Index, NLinks, Assembly, varargin)
+        function obj = HRRSection(Index, NLinks, Alpha, varargin)
             obj@rigidBodyTree;
             obj.Index = Index;
             obj.NLinks = NLinks;
-            %obj.Alpha = Alpha;
-            obj.Assembly = Assembly;
+            obj.Alpha = Alpha;
+            obj.Assembly = obj.Alpha * ones(1, obj.NLinks);
             obj.createLinks;
             obj.EndLink = obj.BodyNames{obj.NLinks};
             obj.A = obj.calculateA();

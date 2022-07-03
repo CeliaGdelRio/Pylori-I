@@ -49,20 +49,3 @@ for i = 1:N
 end
 h.Visible = 'on';
 movie(M);
-
-function q = calculateCircle(R, r, z, NPoints)
-    q = cell(1, NPoints+1); %Vector de configuraciones.
-    %Se calculan los puntos del círculo
-    x1 = linspace(-r,r,NPoints/2+1);
-    x2 = linspace(r,-r,NPoints/2+1);
-    y1 = abs(sqrt(104^2-x1.^2));
-    y2=-abs(sqrt(104^2-x2.^2));
-    
-    for i = 1:(NPoints+1)
-        if i<=NPoints/2
-            [q{i}, ~, ~] = R.move(x1(i), y1(i),z, 'GradientDescent');
-        else
-            [q{i}, ~, ~] = R.move(x2(i-(NPoints/2)), y2(i-(NPoints/2)),z, 'GradientDescent');
-        end
-    end
-end
