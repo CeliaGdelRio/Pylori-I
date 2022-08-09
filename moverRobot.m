@@ -1,4 +1,4 @@
-function moverRobot(ardu,newConfig,tray,N)
+function moverRobot(ardu,pulsos1,tray,N)
     % tray vale 1 si el robot debe seguir una trayectoria y 0 si no.
     % N es el número de puntos de la trayectoria.
 
@@ -8,9 +8,9 @@ function moverRobot(ardu,newConfig,tray,N)
         % Se calculan los pulsos y la velocidad de los motores para cada
         % punto para mover los motores después
         fprintf('Punto nº %i\n', j);
-        hilos = ang2long(newConfig{j});
-        disp(hilos);
-        [pulsos,vel] = long2pulsos(hilos);
+%         hilos = ang2long(newConfig{j});
+%         disp(hilos);
+        [pulsos,vel] = long2pulsos(pulsos1(j));
 
         flush(ardu,"input");
         %motTensar=zeros(1,8);
@@ -31,10 +31,10 @@ function moverRobot(ardu,newConfig,tray,N)
 else % si no se sigue una trayectoria, se mueven los motores directamente
 
     %Se calculan los valores de velocidad y pulsos para mover cada motor
-    hilos = ang2long(newConfig);
+%     hilos = ang2long(newConfig);
     %disp(hilos)
-    [pulsos,vel] = long2pulsos(hilos);
-    pulsos=pulsos*3;
+    [pulsos,vel] = long2pulsos(pulsos1);
+%     pulsos=pulsos*3;
 
     flush(ardu,"input");% limpio los comandos que pudiese haber aún en arduino
     %se van a accionar primero los motores que se destensan y despues de
@@ -43,7 +43,7 @@ else % si no se sigue una trayectoria, se mueven los motores directamente
     cont=0;
         for i=1:2:16
             cont=cont+1;
-            if hilos(i)<=0 %si el motor que se destensa es el impar
+            if pulsos(i)<=0 %si el motor que se destensa es el impar
                 m=i;
                 writeline(ardu,"["+m+";2;"+vel(i)+";"+pulsos(i)+"]");%se mueve el motor impar
                 pause(0.02)
@@ -61,7 +61,6 @@ else % si no se sigue una trayectoria, se mueven los motores directamente
                 tensar(cont)=i; %almaceno en el vector de motores a tensar el impar
             end
         end
-        pause(2);
 %         disp(cont)
 %         disp(tensar)
 
@@ -78,6 +77,6 @@ else % si no se sigue una trayectoria, se mueven los motores directamente
         end
  end
 
-pause(10);
+pause(2);
 
 end
