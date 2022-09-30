@@ -10,7 +10,7 @@ function [pB,pE,motores]=transf_dat(ini,data)
     e_ref_or=ini(10:12);   
     
     
-    %hallo la matriz de trensformacion
+    %hallo la matriz de transformacion
     MTH=transformador_optitrack(b_ref_pos',b_ref_or,e_ref_pos',e_ref_or);
     
     b_pos=data(:,1:3);
