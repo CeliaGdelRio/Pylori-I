@@ -7,9 +7,9 @@ Para poder ejecutar este código hay que tener en cuenta varias cosas:
 	2. El armario debe encenderse correctamente antes de intentar mover el robot: hay que comprobar que el magnetotérmico del interior este subido, la seta de emergencia no esté pulsada y entonces encender el armario.
 	3. El código con la cinemática está escrito en MATLAB R2020 o R2021, y el que mueve el robot en MATLAB R2022a, por lo que si se usa en versiones posteriores puede que esté desfasado.
 	
-###CONTENIDO Y CARPETAS:	
+### CONTENIDO Y CARPETAS:	
 
-###CÓMO SE USA ESTE CÓDIGO:
+### CÓMO SE USA ESTE CÓDIGO:
 
 Las funciones Demo y Demo_Trayectorias sirven para simular la cinemática del robot cuando se mueve a un punto (definido en caartesianas), en el caso de Demo, o traza una trayectoria pasando por varios puntos (también en cartesianas), en el caso de Demo_trayectorias; y devuelven los datos necesarios para mover el robot hasta ese punto o trazar esa trayectoria mediante la función moverRobot.
 	
@@ -31,7 +31,7 @@ calibrarRobot(ardu,2,1);
 delete(ardu);
 ```
 
- Una vez abierta la conexión y establecida la posición inicial, las formas de mover el robot son las siguientes:
+Una vez abierta la conexión y establecida la posición inicial, las formas de mover el robot son las siguientes:
  	
 Para mover motor a motor (mediante la función mover_motor). Si se quiere mover motor m hasta la posición pos(en pulsos) a la velocidad vel (en pulsos/s):
 ```matlab
@@ -46,7 +46,7 @@ mover_motor(ardu,m,1,vel,0,s);
 [newConfig,error,iter,currentPos]=Demo(x,y,z);
 moverRobot(ardu,newConfig,0,1);
 ```
-	Donde el 0 en el tercer argumento de moverRobot indica que es un punto y no una trayectoria y el cuarto argumento indica que es un solo punto. Además, la variable error da el error que se espera de la simulación, la variable iter, el nº de iteraciones que ha tenido que hacer la simulación.
+Donde el 0 en el tercer argumento de moverRobot indica que es un punto y no una trayectoria y el cuarto argumento indica que es un solo punto. Además, la variable error da el error que se espera de la simulación, la variable iter, el nº de iteraciones que ha tenido que hacer la simulación.
 
 Para llevar el robot a la posición inicial:
 ```matlab
