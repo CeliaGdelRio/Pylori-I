@@ -38,6 +38,7 @@ Una vez abierta la conexión y establecida la posición inicial, las formas de m
 ```matlab
 mover_motor(ardu,m,2,vel,pos,1);
 ```
+*
 	* Si se quiere mover motor m a la velocidad vel (en pulsos/s) durante s segundos:
 ```matlab
 mover_motor(ardu,m,1,vel,0,s);
