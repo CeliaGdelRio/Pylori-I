@@ -35,14 +35,13 @@ Una vez abierta la conexión y establecida la posición inicial, las formas de m
  	
 * Para mover motor a motor (mediante la función mover_motor). 
 	* Si se quiere mover motor m hasta la posición pos(en pulsos) a la velocidad vel (en pulsos/s):
-```matlab
-mover_motor(ardu,m,2,vel,pos,1);
-```
-*
+	```matlab
+	mover_motor(ardu,m,2,vel,pos,1);
+	```
 	* Si se quiere mover motor m a la velocidad vel (en pulsos/s) durante s segundos:
-```matlab
-mover_motor(ardu,m,1,vel,0,s);
-```
+	```matlab
+	mover_motor(ardu,m,1,vel,0,s);
+	```
 * Para moverlo a un punto (x,y,z):
 ```matlab
 [newConfig,error,iter,currentPos]=Demo(x,y,z);
