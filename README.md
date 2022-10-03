@@ -9,7 +9,18 @@ Para poder ejecutar este código hay que tener en cuenta varias cosas:
 	
 ### CONTENIDO Y CARPETAS:	
 
+* **Arduino:** Contiene el archivo que debe estar cargado en la placa Arduino Due del armario electrico para poder ejecutar correctamente el código que mueve el robot
+* **Images:** Contiene las imagenes que se han empleado para la memoria y algunas mas. Las imagenes que he obtenido de otras fuentes estan debidamente citadas en la memoria TFM_Celia Garijo del Rio.pdf de la carpeta Memorias_TFM. Las demás son de elaboracion propia por lo que se pueden usar citando la memoria (las que aparecen en ella) o este repositorio.
+*  **Memorias_TTFM:** Contiene las tres memorias de los trabajos de final de grado o master en los que se ha desarrollado este proyecto.
+*  **Red_neuronal:** Contiene el codigo empleado para entrenar las dos redes neuronales en python así como un archivo .csv con los datos que se han empleado en este caso y archivos .txt con las variables (W1, W2, b1, b2, ymin, ymax, xmin y xmax) obtenidas tras entrenar la red que permiten aplicarla en otros programas como Matlab.
+*  **Toma de datos:** Contiene el codigo que se ha empleado tanto para la toma de datos del comportamiento del robot como para el tratamiento de datos.
+*  **piezas_STL:** Contiene todos los archivos .stl de las piezas mecanicas que se han diseñado para el robot. Para poder ejecutar el codigo que mueve el robot es necesario tener en la misma carpeta los archivos Robot_Base.stl, End_Boro_Triang.stl y Mod_Boro_Triang.stl.
+
+El codigo que queda fuera de las carpetas es el que se emplea para mover el robot y el que contiene la cinematica. A continuacion se describe en mas detalle como usar este ultimo.
+
 ### CÓMO SE USA ESTE CÓDIGO:
+
+**IMPORTANTE:** Se ha incluido un archivo .cff en este repositorio para que resulte más sencillo citar este repositorio a quien lo pueda necesitar.
 
 Las funciones Demo y Demo_Trayectorias sirven para simular la cinemática del robot cuando se mueve a un punto (definido en caartesianas), en el caso de Demo, o traza una trayectoria pasando por varios puntos (también en cartesianas), en el caso de Demo_trayectorias; y devuelven los datos necesarios para mover el robot hasta ese punto o trazar esa trayectoria mediante la función moverRobot.
 	
