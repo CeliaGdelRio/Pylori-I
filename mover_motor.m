@@ -30,7 +30,7 @@ if modo==1
 elseif modo==2
    vect="["+ m +";2;"+ pulsos +";"+pos+"]";
    writeline(ardu,vect);
-   pause(3);
+   pause(0.2);
 end
 
 % delete(ardu);

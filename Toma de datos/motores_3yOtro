@@ -1,0 +1,75 @@
+ardu=serialport("/dev/ttyACM0",115200);
+calibrarRobot(ardu,0,1);
+
+rosshutdown
+rosinit("192.168.1.4",11311);
+basesub=rossubscriber("/vrpn_client_node/Trackable1/pose","DataFormat","struct");
+extrsub=rossubscriber("/vrpn_client_node/Trackable2/pose","DataFormat","struct");
+
+%indico el origen
+basedata=receive(basesub,0.5);
+basepos=[basedata.pose.position.x,basedata.pose.position.y,basedata.pose.position.z,basedata.pose.orientation.x,basedata.pose.orientation.y,basedata.pose.orientation.z];
+extrdata=receive(extrsub,0.5);
+expos=[extrdata.pose.position.x,extrdata.pose.position.y,extrdata.pose.position.z,extrdata.pose.orientation.x,extrdata.pose.orientation.y,extrdata.pose.orientation.z];
+% origen=["origen"];
+% writematrix(origen,'dos_motores_2.xls','WriteMode','append');
+motores=zeros(1,16);
+pos=[basepos,expos,motores];
+writematrix(pos,'motores_3+otro.xls','WriteMode','append');
+
+
+header=["x_b","y_b","z_b","yaw_b","pitch_b","roll_b","x_e","y_e","z_e","yaw_e","pitch_e","roll_e","motores"];
+writematrix(header,'motores_3+otro.xls','WriteMode','append');
+% motores=zeros(1,16);
+c=1;
+ibis=1;
+aux=1;
+
+for i=ibis:6
+    p=i*200;
+    motores(3)=p;
+    motores(4)=-1*p;
+    mover_motor(ardu,4,2,1200,-1*p,1);
+    mover_motor(ardu,3,2,1200,p,1);
+
+    for a=c:16
+        if (a>4)
+            if mod(a,2)==1
+                a2=a+1;
+            elseif mod(a,2)==0
+                a2=a-1;
+            end
+            for b=aux:8
+                p2=b*200;
+                motores(a)=p2;
+                motores(a2)=-1*p2;
+
+                mover_motor(ardu,a2,2,1200,-1*p2,1);
+                mover_motor(ardu,a,2,1200,p2,1);
+
+                basedata=receive(basesub,1);
+                basepos=[basedata.pose.position.x,basedata.pose.position.y,basedata.pose.position.z,basedata.pose.orientation.x,basedata.pose.orientation.y,basedata.pose.orientation.z];
+                extrdata=receive(extrsub,1);
+                expos=[extrdata.pose.position.x,extrdata.pose.position.y,extrdata.pose.position.z,extrdata.pose.orientation.x,extrdata.pose.orientation.y,extrdata.pose.orientation.z];
+                pos=[basepos,expos,motores];
+                writematrix(pos,'motores_3+otro.xls','WriteMode','append');
+                %Lo devuelvo al origen despues de cada vez que lo muevo
+                %calibrarRobot(ardu,2,1);
+                motores(a)=0;
+                motores(a2)=0;
+            end
+            aux=1;
+            %Esto lo he añadido despues de generar dos_motores y
+            %dos_motores_2.xls
+            mover_motor(ardu,a2,2,1200,0,1);
+            mover_motor(ardu,a,2,1200,0,1);
+        end
+    end
+    c=1;
+    motores(3)=0; 
+    motores(4)=0;
+end
+ibis=1;
+
+calibrarRobot(ardu,2,1);
+delete(ardu);
